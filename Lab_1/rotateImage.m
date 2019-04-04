@@ -1,4 +1,5 @@
 function rotatedImage = rotateImage(image, angle, method)
+    image = border(image, angle);
     R = [cos(-angle), -sin(-angle); sin(-angle), cos(-angle)];
     [x_size, y_size] = size(image);
     center = transpose(repmat([(x_size / 2);(y_size / 2)], x_size*y_size/2, 2));
@@ -8,7 +9,7 @@ function rotatedImage = rotateImage(image, angle, method)
     coordinates = transpose([X(:), Y(:)]);
     
     canvas = R * (coordinates - center) + center;
-    
+    tic
     for i = 1:length(canvas)
        x = canvas(1, i);
        y = canvas(2, i);
@@ -17,5 +18,6 @@ function rotatedImage = rotateImage(image, angle, method)
        color = pixelValue(image, x, y, method);
        rotatedImage(x1, y1) = color;
     end
+    toc
         
 end

@@ -1,0 +1,14 @@
+function rotatedImage = rotateImage(image, angle, method)
+    R = [cos(angle), -sin(angle); sin(angle), cos(angle)];
+    [x,y] = size(image);
+    center = [floor(x/2), floor(y/2)];
+    rotatedImage = Matrix(x, y);
+    
+    for X in 1:x
+        for Y in 1:y
+            [r_x, r_y] = [X, Y] - center
+            color = pixelValue(image, , , method);
+            rotatedImage(X, Y) = pixelValue;
+        end
+    end
+end

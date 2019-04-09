@@ -1,4 +1,4 @@
-function distance = distance(image, angle, method)
+function d = distance(image, angle, method)
     [x, y] = size(image);
     i = rotateImage(image, angle, method);
     j = rotateImage(i, -angle, method);
@@ -11,6 +11,5 @@ function distance = distance(image, angle, method)
     
     d = image - j;
     d = d.*d;
-    imshow(d);
-    distance = sum(d(:)) / length(d);
+    distance = sum(d)
 end

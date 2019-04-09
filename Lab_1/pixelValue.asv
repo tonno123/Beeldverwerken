@@ -12,15 +12,8 @@ function color = pixelValue(image, x, y, method)
                 x1 = floor(x+1);
                 y1 = floor(y+1);
                 
-                if x1 > x_size
-                    x1 = floor(x) - 1;
-                end
-                
-                if y1 > y_size
-                    y1 = floor(y) - 1;
-                end
-                
-                color = (1-alfa)*(1-beta)*image(floor(x), floor(y))+(1-alfa)*beta*image(floor(x), y1)+alfa*beta*image(x1, y1)+alfa*(1-beta)*image(x1, floor(y));
+                if x1 > 
+                color = (1-alfa)*(1-beta)*image(floor(x), floor(y))+(1-alfa)*beta*image(floor(x), floor(y+1.0))+alfa*beta*image(floor(x+1.0), floor(y+1.0))+alfa*(1-beta)*image(floor(x+1.0), floor(y));
         end % end switch
     else
         color = -1;

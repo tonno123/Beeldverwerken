@@ -8,12 +8,20 @@ for i = 1:x
     A = [A B];
 end
 C = repmat(reshape((1:y), [1, y]), 1, x);
-rotatedImage = [A; C];
+resultCoordinates = [A; C];
 D = ones(1, (x*y));
-rotatedImage = [rotatedImage; D];
+resultCoordinates = [resultCoordinates; D];
 
 iv_rotation = [cos(angle), sin(angle), 0; -sin(angle), cos(angle), 0; 0, 0, 1];
-rotatedImage = iv_rotation * rotatedImage;
+originalCoordinates = iv_rotation * resultCoordinates;
+for i = 1:length(resultCoordinates)
+       x = originalCoordinates(1, i);
+       y = originalCoordinates(2, i);
+       x1 = resultCoordinates(1, i);
+       y1 = resultCoordinates(2, i);
+       color = pixelValue(image, x, y, method);
+       rotatedImage(x1, y1) = color;
+    end
 % Create the necessary rotation matrix
 % Obtain indices needed for interpolation
 % Obtain colors for the whole rotatedImage matrix

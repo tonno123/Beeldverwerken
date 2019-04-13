@@ -1,0 +1,14 @@
+function 3DMatrix = create3DProjectionMatrix(xyz, uv)
+    x = xy(: , 1);
+    y = xy(: , 2);
+    z = xy(: , 3);
+    % we cannot use x ’ and y ’ in Matlab because ’ means transposed
+    u = uv(: , 1);
+    v = uv(: , 2);
+    o = ones ( size ( x ));
+    zero = zeros ( size ( x ));
+    Aoddrows = [x , y , z, o , zero , zero , zero , zero, -u .* x , -u .* y , -u.* w, -u ];
+    Aevenrows = [zero , zero , zero , zero, x , y , z, o , -v .* x , -v .* y , -v .* z, -v ];
+    A = [ Aoddrows ; Aevenrows ];
+    projMatrix = A;
+end

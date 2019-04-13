@@ -6,11 +6,8 @@ function projMatrix = createProjectionMatrix(xy, uv)
     v = uv (: , 2);
     o = ones ( size ( x ));
     z = zeros ( size ( x ));
-    A = [];
-    for i = 1:4
-        Aoddrows = [x(i) , y(i) , 1 , 0 , 0 , 0 , -u(i) .* x(i) , -u(i) .* y(i) , -u(i) ];
-        Aevenrows = [0 , 0 , 0 , x(i) , y(i) , 1 , -v(i) .* x(i) , -v(i) .* y(i) , -v(i) ];
-        A = [A ; Aoddrows ; Aevenrows ];
-    end
+    Aoddrows = [x , y , o , z , z , z , -u .* x , -u .* y , -u ];
+    Aevenrows = [z , z , z , x , y , o , -v .* x , -v .* y , -v ];
+    A = [ Aoddrows ; Aevenrows ];
     projMatrix = A;
 end

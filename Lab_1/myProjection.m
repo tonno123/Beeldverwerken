@@ -1,5 +1,5 @@
-function projection = myProjection(image, x1, y1, x2, y2, x3, y3, x4, y4, m, n, method)
-    %projection = zeros(n, m);
+function projection = myProjection(image, x1, y1, x2, y2, x3, y3, x4, y4, n, m, method)
+    projection = zeros(m, n);
     % (x1, y1): top left, (x2, y2): top right, (x3, y3): bottom left,
     % (x4, y4): bottom right.
     xy = [x1, y1; x2, y2; x3, y3; x4, y4];
@@ -30,4 +30,4 @@ function projection = myProjection(image, x1, y1, x2, y2, x3, y3, x4, y4, m, n, 
         projection(ya, xa) = pixelValue(image, x, y, method);
     end
     
-    %test = myProjection(b, 186, 571, 168, 824, 559, 347, 588, 596, 200, 300, 'linear')
+    %test = myProjection(b, 186, 570, 169, 822, 559, 347, 588, 596, 300, 450, 'linear')

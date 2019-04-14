@@ -4,5 +4,8 @@ A = create3DProjectionMatrix(XYZ, xy);
 [U , D , V ] = svd ( A );
 m = V (: , end );
 % reshape m into the 3 x4 projection matrix M
-M = reshape (m , 3 , 4)';
+M = reshape (m , 4 , 3)';
 end
+% xy = getfield(calibrationpoints, 'xy');
+% XYZ = getfield(calibrationpoints, 'XYZ');
+% estimateProjectionMatrix(xy, XYZ)

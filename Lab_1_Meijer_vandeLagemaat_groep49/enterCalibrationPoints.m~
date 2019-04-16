@@ -1,0 +1,5 @@
+function output = enterCalibrationPoints(image)
+    imshow(image)
+    hold on;
+    output = ginput(4);
+end
